@@ -1,0 +1,30 @@
+{
+  "name": "react-root",
+  "version": "1.0.0",
+  "description": "Root component for bootstrapping react, react-router, redux, webpack, devServer, etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ripeworks/react-root.git"
+  },
+  "author": "Ripeworks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ripeworks/react-root/issues"
+  },
+  "homepage": "https://github.com/ripeworks/react-root#readme",
+  "dependencies": {
+    "history": "^1.17.0",
+    "react-redux": "^4.0.6",
+    "react-router": "^1.0.3",
+    "redux": "^3.0.5",
+    "redux-devtools": "^3.0.1",
+    "redux-simple-router": "^1.0.2"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0"
+  }
+}
