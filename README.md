@@ -1,4 +1,4 @@
-# React <Root />
+# React &lt;Root /&gt;
 
 > Because I don't want to deal with boilerplates and starters.
 
