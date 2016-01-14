@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/ripeworks/react-root.git"
   },
-  "author": "Ripeworks",
-  "license": "ISC",
+  "author": "Mike Kruk <mike@ripeworks.com> (https://ripeworks.com)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ripeworks/react-root/issues"
   },
