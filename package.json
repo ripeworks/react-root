@@ -1,6 +1,6 @@
 {
   "name": "react-root",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Root component for bootstrapping react, react-router, redux",
   "main": "lib/index.js",
   "files": [
