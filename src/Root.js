@@ -14,7 +14,8 @@ export default class Root extends Component {
   static propTypes = {
     routes : PropTypes.any.isRequired,
     middleware : PropTypes.array,
-    reducers : PropTypes.object
+    reducers : PropTypes.object,
+    store : PropTypes.any
   };
 
   static defaultProps = {
@@ -25,9 +26,14 @@ export default class Root extends Component {
   constructor(props) {
     super(props)
 
-    const {middleware, reducers} = props
-    reducer = combineReducers({...reducers, routing})
-    store = createStore(middleware, reducer)
+    if (props.store) {
+      store = props.store
+    } else {
+      const {middleware, reducers} = props
+      reducer = combineReducers({...reducers, routing})
+      store = createStore(middleware, reducer)
+    }
+
     syncReduxAndRouter(history, store)
   }
 
