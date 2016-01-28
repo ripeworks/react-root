@@ -41,3 +41,6 @@ render(
 * redux-simple-router
 * redux-devtools
 
+## Related Projects
+
+* [superdevpack](https://github.com/ripeworks/superdevpack) Use react-root and superdevpack together for the quickest way to get started on a React project.
