@@ -1,21 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router'
-import { createHistory } from 'history'
-import { syncReduxAndRouter } from 'redux-simple-router'
-import { routeReducer as routing } from 'redux-simple-router'
-import { combineReducers } from 'redux'
-import createStore from './createStore'
+import { Router, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-const history = createHistory()
-let store, reducer
+let history, store
 
 export default class Root extends Component {
   static propTypes = {
     routes : PropTypes.any.isRequired,
-    middleware : PropTypes.array,
-    reducers : PropTypes.object,
-    store : PropTypes.any
+    store : PropTypes.any.isRequired,
+    history : PropTypes.any,
+    routeRender : PropTypes.func
   };
 
   static defaultProps = {
@@ -26,22 +21,25 @@ export default class Root extends Component {
   constructor(props) {
     super(props)
 
-    if (props.store) {
-      store = props.store
+    if (props.history) {
+      history = props.history
     } else {
-      const {middleware, reducers} = props
-      reducer = combineReducers({...reducers, routing})
-      store = createStore(middleware, reducer)
+      history = browserHistory
     }
 
-    syncReduxAndRouter(history, store)
+    store = props.store
+    history = syncHistoryWithStore(history, store)
   }
 
   render() {
-    const {routes} = this.props
+    const {routes, routeRender} = this.props
+    const routerProps = {history}
+    if (routeRender) {
+      routerProps.render = routeRender
+    }
 
     return <Provider store={store}>
-      <Router history={history}>
+      <Router {...routerProps}>
         {routes}
       </Router>
     </Provider>

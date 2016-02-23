@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Route } from 'react-router'
 
-import Root from '../src/Root'
+import { Root, createStore } from '../src/index'
 
 class Index extends Component {
   render() {
@@ -12,9 +12,11 @@ class Index extends Component {
   }
 }
 
+const store = createStore()
+
 const routes = <Route path='/' component={Index} />
 
 render(
-  <Root routes={routes} />,
+  <Root routes={routes} store={store} />,
   document.getElementById('app')
 )

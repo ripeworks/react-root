@@ -1,12 +1,17 @@
-import { createStore, compose, applyMiddleware } from 'redux'
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
+import { routerReducer as routing } from 'react-router-redux'
 
-export default (middleware, reducer) => {
-  const finalMiddleware = [applyMiddleware(...middleware)]
-  const finalCreateStore = compose(...finalMiddleware)(createStore)
+export default (middleware = [], reducers = {}, enhancers = [], hot = null) => {
+  const reducer = combineReducers({...reducers, routing})
+  const store = createStore(reducer, compose(
+    applyMiddleware(...middleware),
+    ...enhancers,
+    typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+  ))
 
-  const store = finalCreateStore(reducer)
-
-  // fixme - support module.hot
+  if (module.hot && hot) {
+    hot(store)
+  }
 
   return store
 }
