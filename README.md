@@ -2,6 +2,8 @@
 
 > Because I don't want to deal with boilerplates and starters.
 
+[![npm version](https://badge.fury.io/js/react-root.svg)](https://badge.fury.io/js/react-root)
+
 ## Install
 
 ```
